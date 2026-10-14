@@ -3,7 +3,7 @@
 
 void introOutput();
 void initOutput();
-void stageFirstOutput();
+void showGo();
 void scoreboard();
 void createNumber();
 
