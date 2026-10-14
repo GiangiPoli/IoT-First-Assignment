@@ -44,11 +44,10 @@ void stage1(){
   }
 
   /*Showing the ignition process*/
-  void scoreboard();
+  scoreboard();
   if(getCurrentTimeInState() > 5000){
+    showGo();
     if(getCurrentTimeInState() > 7000){
-      showGo();
-      createNumber();
       changeState(STAGE2_STATE);
     }
   }
@@ -59,6 +58,8 @@ void stage2(){
     Serial.println("Stage2...");
   }
 
+  /*Show random number*/
+  createNumber();
   /* change the state if button 1 is pressed or max time elapsed*/
   if (isButtonPressed(1) || getCurrentTimeInState() > MAX_TIME_IN_STAGE2_STATE){
     changeState(FINAL_STATE);          
