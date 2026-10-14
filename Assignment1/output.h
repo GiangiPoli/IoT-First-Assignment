@@ -4,5 +4,7 @@
 void introOutput();
 void initOutput();
 void stageFirstOutput();
+void scoreboard();
+void createNumber();
 
 #endif
