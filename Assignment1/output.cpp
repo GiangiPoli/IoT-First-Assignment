@@ -59,9 +59,9 @@ void showGo() {
 void scoreboard() {
   lcd.clear();
   lcd.setCursor(2, 3);
-  lcd.print("" + getScore0());
+  lcd.print(getScore0());
   lcd.setCursor(2, 16);
-  lcd.print("" + getScore1());
+  lcd.print(getScore1());
 }
 
 void createNumber() {
