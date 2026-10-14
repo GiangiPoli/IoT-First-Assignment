@@ -4,5 +4,6 @@
 void introOutput();
 void initOutput();
 void stageFirstOutput();
+void introLCD();
 
 #endif
