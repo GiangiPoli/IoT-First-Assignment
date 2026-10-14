@@ -3,12 +3,14 @@
 #include "core.h"
 #include "input.h" 
 #include "output.h"
+#include "scoreboard.h"
 
 void setup() {
   initCore();
   initInput();
   changeState(INTRO_STATE);
   initOutput();
+  resetScore();
 }
 
 void loop(){ 
