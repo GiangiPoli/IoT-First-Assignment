@@ -3,10 +3,8 @@
 
 void resetScore();
 
-void incrementScore0();
-void incrementScore1();
-void decreaseScore0();
-void decreaseScore1();
+void incrementScore(int buttonIndex);
+void decreaseScore(int buttonIndex);
 
 int getScore0();
 int getScore1();
