@@ -28,8 +28,8 @@ void introOutput(){
     f = -f;
   }
   led_value = led_value + f;
-  analogWrite(2, led_value);
-  analogWrite(3, 255 - led_value);
+  analogWrite(L1, led_value);
+  analogWrite(L3, 255 - led_value);
 
   lcd.setCursor(0, 0);
   lcd.print(intro.substring(pos, pos + 20));
@@ -39,5 +39,5 @@ void introOutput(){
     pos = 0;
   }
 
-  delay(100);
+  delay(500);
 }
