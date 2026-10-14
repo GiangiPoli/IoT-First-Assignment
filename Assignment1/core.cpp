@@ -35,7 +35,9 @@ void intro(){
 void stage1(){
   if (isJustEnteredInState()){
     Serial.println("Stage1...");
-    resetInput();
+    for(int i=0; i < NUM_BUTTONS; i++){
+      resetInput(i);
+    }
     resetScore();
   }
 
@@ -43,12 +45,14 @@ void stage1(){
   for(int i=0; i < NUM_BUTTONS; i++){
     if(isButtonPressed(i)){
       decreaseScore(i);
+      resetInput(i);
     }
   }
 
   /*Showing the ignition process*/
-  scoreboard();
-  if(getCurrentTimeInState() > 5000){
+  if(getCurrentTimeInState() <= 5000){
+    scoreboard();
+  }else if(getCurrentTimeInState() > 5000){
     showGo();
     if(getCurrentTimeInState() > 7000){
       changeState(STAGE2_STATE);
