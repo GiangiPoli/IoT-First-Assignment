@@ -14,9 +14,7 @@ void incrementScore(int buttonIndex){
 }
 
 void decreaseScore(int buttonIndex){
-  if(teamScore[buttonIndex] > 0){
-    teamScore[buttonIndex] -= 1;
-  }
+  teamScore[buttonIndex] -= 1;
 }
 
 int getScore0(){
