@@ -63,14 +63,13 @@ void stage2(){
   /*Show random number*/
   createNumber();
   /* change the state if button 1 is pressed or max time elapsed*/
-  if (isButtonPressed(1) || getCurrentTimeInState() > MAX_TIME_IN_STAGE2_STATE){
-    changeState(FINAL_STATE);          
-  }
+  //if (isButtonPressed(1) || getCurrentTimeInState() > MAX_TIME_IN_STAGE2_STATE){
+  //  changeState(FINAL_STATE);          
+  //}
 }
 
 void finalize(){
   if (isJustEnteredInState()){
     Serial.println("Finalize...");
   }
-  changeState(INTRO_STATE);
 }
