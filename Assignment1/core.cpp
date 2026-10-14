@@ -29,6 +29,7 @@ void intro(){
   if (isButtonPressed(0) && isButtonPressed(1)) {
     changeState(STAGE1_STATE);
   }
+  resetScore();
 }
 
 void stage1(){
