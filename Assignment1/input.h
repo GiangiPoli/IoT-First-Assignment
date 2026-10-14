@@ -2,7 +2,7 @@
 #define __INPUT__
 
 void initInput();
-void resetInput();
+void resetInput(int buttonIndex);
 bool isButtonPressed(int buttonIndex);
  
 #endif

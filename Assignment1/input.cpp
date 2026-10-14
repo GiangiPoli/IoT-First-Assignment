@@ -39,12 +39,13 @@ void initInput(){
   }
 }
 
-void resetInput(){
+void resetInput(int buttonIndex){
   long ts = millis();
-  for (int i = 0; i < NUM_BUTTONS; i++) {
-    buttonPressed[i] = false;      
-    lastButtonPressedTimestamps[i] = ts;    
-  }
+
+  /*Removed the for cycle so i could choose which button reset, without creatig new dedicated function*/
+  buttonPressed[buttonIndex] = false;      
+  lastButtonPressedTimestamps[buttonIndex] = ts;    
+  
 }
 bool isButtonPressed(int buttonIndex){
   return buttonPressed[buttonIndex];
