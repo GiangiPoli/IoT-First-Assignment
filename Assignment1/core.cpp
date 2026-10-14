@@ -6,7 +6,7 @@
 #include "scoreboard.h"
 #include "config.h"
 
-#define MAX_TIME_IN_INTRO_STATE 100000
+#define MAX_TIME_IN_INTRO_STATE 10000
 #define MAX_TIME_IN_STAGE2_STATE 10000
 
 /* core business logic */
@@ -22,6 +22,7 @@ void intro(){
   introOutput();
   //introLCD();
   int dt = getCurrentTimeInState();
+  Serial.println(dt);
   if (dt > MAX_TIME_IN_INTRO_STATE){
     sleepMode();
   }

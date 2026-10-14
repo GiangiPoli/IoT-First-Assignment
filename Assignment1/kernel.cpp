@@ -1,4 +1,5 @@
 #include "kernel.h"
+#include <avr/sleep.h>
 
 /* current state */
 int currentState;
@@ -46,4 +47,10 @@ void logMsg(const String& msg){
   #ifdef __DEBUG__
   Serial.println(msg);
   #endif
+}
+
+void sleepMode(){
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  sleep_enable();
+  sleep_mode();
 }

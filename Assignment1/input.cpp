@@ -34,7 +34,8 @@ void buttonHandler(int i){
 void initInput(){
   for (int i = 0; i < NUM_BUTTONS; i++) {
     pinMode(inputPins[i], INPUT);  
-    enableInterrupt(inputPins[i], buttonHandlers[i], CHANGE);       
+    enableInterrupt(inputPins[i], buttonHandlers[i], CHANGE);
+    //attachInterrupt(digitalPinToInterrupt(i), wakeUp, RISING);
   }
 }
 

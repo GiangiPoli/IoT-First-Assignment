@@ -2,6 +2,7 @@
 #include "Arduino.h"
 #include "config.h"
 #include <LiquidCrystal_I2C.h>
+#include "scoreboard.h"
 // #define __DEBUG__
 
 LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27,20,4);
@@ -10,6 +11,10 @@ int led_value;
 int f;
 String intro = "Welcome to the React! Game. Press Buttons to Start";
 int pos;
+int ultimoAggiornamento = 0;
+int intervallo = 30;
+int intervalloLCD = 500;
+int aggiornamentoLCD = 0;
 
 void initOutput(){
   pinMode(L1, OUTPUT);
@@ -17,27 +22,50 @@ void initOutput(){
   pinMode(L3, OUTPUT);
   pinMode(L4, OUTPUT);
   led_value = 0;
-  f = 1;
+  f = 5;
   lcd.init();
   lcd.backlight();
   pos = 0;  
 }
 
 void introOutput(){
-  if (led_value == 255 || led_value == 0) {
-    f = -f;
-  }
-  led_value = led_value + f;
-  analogWrite(L1, led_value);
-  analogWrite(L3, 255 - led_value);
+  if (millis() - ultimoAggiornamento >= intervallo) {
+    ultimoAggiornamento = millis();
+    analogWrite(L2, led_value);
+    analogWrite(L3, 255 - led_value);
+    led_value = led_value + f;
 
-  lcd.setCursor(0, 0);
-  lcd.print(intro.substring(pos, pos + 20));
-  pos++;
-
-  if(pos == 31) {
-    pos = 0;
+    if(led_value <= 0 || led_value >= 255) {
+      f = -f;
+    }
   }
 
-  delay(500);
+  if (millis() - aggiornamentoLCD >= intervalloLCD) {
+    aggiornamentoLCD = millis();
+    lcd.setCursor(0, 0);
+    lcd.print(intro.substring(pos, pos + 20));
+    pos++;
+    if(pos == 31) {
+      pos = 0;
+    }
+  }
+}
+void showGo() {
+  lcd.clear();
+  lcd.setCursor(2, 10);
+  lcd.print("Go!");
+}
+
+void scoreboard() {
+  lcd.clear();
+  lcd.setCursor(2, 3);
+  lcd.print("" + getScore0());
+  lcd.setCursor(2, 16);
+  lcd.print("" + getScore1());
+}
+
+void createNumber() {
+  lcd.clear();
+  lcd.setCursor(2, 9);
+  lcd.print("2");
 }
