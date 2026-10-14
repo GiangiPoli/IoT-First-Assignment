@@ -12,6 +12,10 @@ String intro = "Welcome to the React! Game. Press Buttons to Start";
 int pos;
 
 void initOutput(){
+  pinMode(L1, OUTPUT);
+  pinMode(L2, OUTPUT);
+  pinMode(L3, OUTPUT);
+  pinMode(L4, OUTPUT);
   led_value = 0;
   f = 1;
   lcd.init();
