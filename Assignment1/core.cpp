@@ -36,6 +36,7 @@ void stage1(){
   if (isJustEnteredInState()){
     Serial.println("Stage1...");
     resetInput();
+    resetScore();
   }
 
   /*Checking if the buttons get pressed*/
