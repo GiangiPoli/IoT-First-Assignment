@@ -3,6 +3,8 @@
 #include "kernel.h"
 #include "input.h"
 #include "output.h"
+#include "scoreboard.h"
+#include "config.h"
 
 #define MAX_TIME_IN_INTRO_STATE 100000
 #define MAX_TIME_IN_STAGE2_STATE 10000
@@ -34,9 +36,21 @@ void stage1(){
     resetInput();
   }
 
-  /* change the state if button 0 is pressed */
-  if (isButtonPressed(0)){
-    changeState(STAGE2_STATE);          
+  /*Checking if the buttons get pressed*/
+  for(int i=0; i < NUM_BUTTONS; i++){
+    if(isButtonPressed(i)){
+      decreaseScore(i);
+    }
+  }
+
+  /*Showing the ignition process*/
+  void scoreboard();
+  if(getCurrentTimeInState() > 5000){
+    if(getCurrentTimeInState() > 7000){
+      showGo();
+      createNumber();
+      changeState(STAGE2_STATE);
+    }
   }
 }
 
