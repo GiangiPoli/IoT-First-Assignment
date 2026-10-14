@@ -17,7 +17,7 @@ void initOutput(){
   pinMode(L3, OUTPUT);
   pinMode(L4, OUTPUT);
   led_value = 0;
-  f = 1;
+  f = -5;
   lcd.init();
   lcd.backlight();
   pos = 0;  
@@ -28,9 +28,9 @@ void introOutput(){
     f = -f;
   }
   led_value = led_value + f;
-  analogWrite(L1, led_value);
+  analogWrite(L2, led_value);
   analogWrite(L3, 255 - led_value);
-
+  //Serial.println(led_value);
   lcd.setCursor(0, 0);
   lcd.print(intro.substring(pos, pos + 20));
   pos++;
@@ -39,5 +39,5 @@ void introOutput(){
     pos = 0;
   }
 
-  delay(500);
+  delay(200);
 }
