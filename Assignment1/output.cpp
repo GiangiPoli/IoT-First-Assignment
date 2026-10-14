@@ -52,20 +52,20 @@ void introOutput(){
 }
 void showGo() {
   lcd.clear();
-  lcd.setCursor(2, 10);
+  lcd.setCursor(10, 2);
   lcd.print("Go!");
 }
 
 void scoreboard() {
   lcd.clear();
-  lcd.setCursor(2, 3);
+  lcd.setCursor(3, 2);
   lcd.print(getScore0());
-  lcd.setCursor(2, 16);
+  lcd.setCursor(16, 2);
   lcd.print(getScore1());
 }
 
 void createNumber() {
   lcd.clear();
-  lcd.setCursor(2, 9);
+  lcd.setCursor(9, 2);
   lcd.print("2");
 }
