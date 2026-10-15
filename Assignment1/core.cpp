@@ -30,7 +30,10 @@ void intro(){
   }
   if (isButtonPressedTogheter()) {
     changeState(STAGE1_STATE);
+    resetInput(0);
+    resetInput(1);
   }
+
   resetScore();
 }
 
@@ -43,24 +46,22 @@ void stage1(){
   if (isJustEnteredInState()){
     resetScreen();
     Serial.println("Stage1...");
-    for(int i=0; i < NUM_BUTTONS; i++){
-      resetInput(i);
-    }
-    resetScore();
   }
-
+  showGo();
   /*Showing the ignition process*/
   if(getCurrentTimeInState() > 5000){
-    showGo();
     changeState(STAGE2_STATE);
   }
 }
 
 void stage2(){
   if (isJustEnteredInState()){
+    resetInput(0);
+    resetInput(1);
     resetScreen();
     Serial.println("Stage2...");
     randomWaitTime = random(0, MAX_WAIT);
+    Serial.println(randomWaitTime);
   }
 
   /*If buttons get pressed bedfore the number gets displayed, the player will lose a point*/
