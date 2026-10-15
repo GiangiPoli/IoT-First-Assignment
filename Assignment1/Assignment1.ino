@@ -25,10 +25,14 @@ void loop(){
   case STAGE2_STATE:
     stage2();
     break;
+  case END_ROUND_STATE:
+    endRound();
+    break;
   case FINAL_STATE:
     finalize();
     break;
   case SLEEP_STATE:
     sleep();
+    break;
   }
 }
