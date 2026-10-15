@@ -8,11 +8,13 @@
 
 #define MAX_TIME_IN_INTRO_STATE 10000
 #define MAX_TIME_IN_STAGE2_STATE 10000
+#define MAX_WAIT 5000
 
-/* core business logic */
+int randomWaitTime;
 
 void initCore(){
   Serial.begin(9600);
+  randomSeed(analogRead(0));
 }
 
 void intro(){
@@ -47,22 +49,10 @@ void stage1(){
     resetScore();
   }
 
-  /*Checking if the buttons get pressed*/
-  for(int i=0; i < NUM_BUTTONS; i++){
-    if(isButtonPressed(i)){
-      decreaseScore(i);
-      resetInput(i);
-    }
-  }
-
   /*Showing the ignition process*/
-  if(getCurrentTimeInState() <= 5000){
-    scoreboard();
-  }else if(getCurrentTimeInState() > 5000){
+  if(getCurrentTimeInState() > 5000){
     showGo();
-    if(getCurrentTimeInState() > 7000){
-      changeState(STAGE2_STATE);
-    }
+    changeState(STAGE2_STATE);
   }
 }
 
@@ -70,14 +60,33 @@ void stage2(){
   if (isJustEnteredInState()){
     resetScreen();
     Serial.println("Stage2...");
+    randomWaitTime = random(0, MAX_WAIT);
   }
 
+
+  if(getCurrentTimeInState() < randomWaitTime){
+      
+  }
   /*Show random number*/
   createNumber();
-  /* change the state if button 1 is pressed or max time elapsed*/
-  //if (isButtonPressed(1) || getCurrentTimeInState() > MAX_TIME_IN_STAGE2_STATE){
-  //  changeState(FINAL_STATE);          
-  //}
+
+
+
+
+}
+
+void endRound(){
+  if (isJustEnteredInState()){
+    resetScreen();
+    Serial.println("End round stage...");
+  }
+
+  /*Showing scoreboard for 3 second, then going back to stage 2*/
+  if(getCurrentTimeInState() < 3000){
+    scoreboard();
+  }else{
+    changeState(STAGE2_STATE);
+  }
 }
 
 void finalize(){
