@@ -63,9 +63,19 @@ void stage2(){
     randomWaitTime = random(0, MAX_WAIT);
   }
 
-
+  /*If buttons get pressed bedfore the number gets displayed, the player will lose a point*/
   if(getCurrentTimeInState() < randomWaitTime){
-      
+    if(isButtonPressed(0) || isButtonPressed(1)){
+      int i;
+      if(isButtonPressed(0)){
+        i = 0;
+      }else{
+        i = 1;
+      }
+      decreaseScore(i);
+      resetInput(i);
+      changeState(END_ROUND_STATE);
+    }
   }
   /*Show random number*/
   createNumber();
