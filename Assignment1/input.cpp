@@ -13,6 +13,7 @@ bool buttonPressed[NUM_BUTTONS] = {false, false};
 
 /* used for debouncing */
 long lastButtonPressedTimestamps[NUM_BUTTONS];
+unsigned long buttonTimestamps[NUM_BUTTONS] = {0,0};
 
 void buttonHandler(int i);
 void buttonHandler0(){ buttonHandler(0); }
@@ -27,8 +28,20 @@ void buttonHandler(int i){
     int status = digitalRead(inputPins[i]);
     if (status == HIGH && !buttonPressed[i]) { 
         buttonPressed[i] = true;
+        buttonTimestamps[i] = ts;
     }
   }
+}
+
+bool isButtonPressedTogheter() {
+  if (!buttonPressed[0] || !buttonPressed[1]) {return false;}
+  unsigned long t0,t1;
+  noInterrupts();
+  t0 = buttonTimestamps[0];
+  t1 = buttonTimestamps[1];
+  interrupts();
+  unsigned long result = (t0 > t1) ? (t0 - t1) : (t1 - t0);
+  return result <= 200;
 }
 
 void initInput(){

@@ -4,17 +4,16 @@
 #include <LiquidCrystal_I2C.h>
 #include "scoreboard.h"
 // #define __DEBUG__
-
+int intervallo = 30;
+int intervalloLCD = 500;
+int aggiornamentoLCD = 0;
+String intro = "Welcome to the React! Game. Press Buttons to Start";
 LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27,20,4);
 uint8_t outputPins[NUM_LED] = {L1, L2, L3, L4};
 int led_value;
 int f;
-String intro = "Welcome to the React! Game. Press Buttons to Start";
 int pos;
 int ultimoAggiornamento = 0;
-int intervallo = 30;
-int intervalloLCD = 500;
-int aggiornamentoLCD = 0;
 
 void initOutput(){
   pinMode(L1, OUTPUT);
