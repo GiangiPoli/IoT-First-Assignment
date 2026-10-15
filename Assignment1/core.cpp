@@ -11,6 +11,7 @@
 #define MAX_WAIT 5000
 
 int randomWaitTime;
+int count0, count1;
 
 void initCore(){
   Serial.begin(9600);
@@ -60,12 +61,14 @@ void stage2(){
     resetInput(1);
     resetScreen();
     Serial.println("Stage2...");
-    randomWaitTime = random(0, MAX_WAIT);
-    Serial.println(randomWaitTime);
+    count0=0;
+    count1=0;
+    //randomWaitTime = random(0, MAX_WAIT);
+    //Serial.println(randomWaitTime);
   }
 
   /*If buttons get pressed bedfore the number gets displayed, the player will lose a point*/
-  if(getCurrentTimeInState() < randomWaitTime){
+  if(getCurrentTimeInState() < 3000){
     if(isButtonPressed(0) || isButtonPressed(1)){
       int i;
       if(isButtonPressed(0)){
@@ -75,15 +78,34 @@ void stage2(){
       }
       decreaseScore(i);
       resetInput(i);
+      Serial.println("Indice i -> " + i);
+      changeState(END_ROUND_STATE);
+    }
+  }else{
+    /*Show random number*/
+    createNumber();
+    if(isButtonPressed(0) || isButtonPressed(1)){
+      int i;
+      if(isButtonPressed(0)){
+        i = 0;
+        count0++;
+      }else{
+        i = 1;
+        count1++;
+      }
+
+      resetInput(i);
+    }
+
+    if(count0 == 2 || count1 == 2){
+      if(count0 == 2){
+        incrementScore(0);
+      }else{
+        incrementScore(1);
+      }
       changeState(END_ROUND_STATE);
     }
   }
-  /*Show random number*/
-  createNumber();
-
-
-
-
 }
 
 void endRound(){
