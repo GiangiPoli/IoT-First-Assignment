@@ -33,7 +33,7 @@ void intro(){
 }
 
 void sleep() {
-  sleep_mode();
+  sleepMode();
   changeState(INTRO_STATE);
 }
 

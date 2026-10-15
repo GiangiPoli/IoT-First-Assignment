@@ -59,7 +59,7 @@ void scoreboard() {
   lcd.print("P1");
   lcd.setCursor(3, 2);
   lcd.print(getScore0());
-  lcd.set(16, 1);
+  lcd.setCursor(16, 1);
   lcd.print("P2");
   lcd.setCursor(16, 2);
   lcd.print(getScore1());
