@@ -5,6 +5,7 @@
 #define STAGE1_STATE  2
 #define STAGE2_STATE  3
 #define FINAL_STATE   4 
+#define SLEEP_STATE   5
 
 /* core business logic  */
 
@@ -13,5 +14,6 @@ void intro();
 void stage1();
 void stage2();
 void finalize();
+void sleep();
 
 #endif

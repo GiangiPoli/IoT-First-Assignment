@@ -17,23 +17,29 @@ void initCore(){
 
 void intro(){
   if (isJustEnteredInState()){
+    resetScreen();
     Serial.println("Intro...");
   }
   introOutput();
-  //introLCD();
   int dt = getCurrentTimeInState();
   Serial.println(dt);
   if (dt > MAX_TIME_IN_INTRO_STATE){
-    sleepMode();
+    changeState(SLEEP_STATE);
   }
-  if (isButtonPressed(0) && isButtonPressed(1)) {
+  if (isButtonPressedTogheter()) {
     changeState(STAGE1_STATE);
   }
   resetScore();
 }
 
+void sleep() {
+  sleep_mode();
+  changeState(INTRO_STATE);
+}
+
 void stage1(){
   if (isJustEnteredInState()){
+    resetScreen();
     Serial.println("Stage1...");
     for(int i=0; i < NUM_BUTTONS; i++){
       resetInput(i);
@@ -62,6 +68,7 @@ void stage1(){
 
 void stage2(){
   if (isJustEnteredInState()){
+    resetScreen();
     Serial.println("Stage2...");
   }
 

@@ -5,5 +5,4 @@ void initInput();
 void resetInput(int buttonIndex);
 bool isButtonPressed(int buttonIndex);
 bool isButtonPressedTogheter();
- 
 #endif

@@ -28,5 +28,7 @@ void loop(){
   case FINAL_STATE:
     finalize();
     break;
+  case SLEEP_STATE:
+    sleep();
   }
 }

@@ -6,5 +6,6 @@ void initOutput();
 void showGo();
 void scoreboard();
 void createNumber();
+void resetScreen();
 
 #endif
