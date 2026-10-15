@@ -24,7 +24,9 @@ void buttonHandler1(){ buttonHandler(1); }
 void (*buttonHandlers[NUM_BUTTONS])() = { buttonHandler0, buttonHandler1 };
 
 void buttonHandler(int i){
-  if (getCurrentState() == INTRO_STATE || getCurrentState() == STAGE1_STATE) {
+  if (getCurrentState() == SLEEP_STATE){
+
+  }else{
     long ts = millis();
     if (ts - lastButtonPressedTimestamps[i] > BOUNCING_TIME){
       lastButtonPressedTimestamps[i] = ts;
@@ -34,10 +36,6 @@ void buttonHandler(int i){
           buttonTimestamps[i] = ts;
       }
     }
-  } else if (getCurrentState() == SLEEP_STATE) {
-    //si dece mettere che se uno preme un tasto sveglia l'arduino
-  } else if (getCurrentState() == STAGE2_STATE) {
-    //...
   }
 }
 
