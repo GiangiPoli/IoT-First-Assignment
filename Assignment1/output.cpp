@@ -73,3 +73,8 @@ void createNumber() {
 void resetScreen() {
   lcd.clear();
 }
+
+void stage1Output() {
+  analogWrite(L2, 0);
+  analogWrite(L3, 0);
+}

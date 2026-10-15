@@ -7,5 +7,6 @@ void showGo();
 void scoreboard();
 void createNumber();
 void resetScreen();
+void stage1Output();
 
 #endif
