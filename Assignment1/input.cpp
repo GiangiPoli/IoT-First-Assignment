@@ -1,6 +1,8 @@
 #include "input.h"
 #include "Arduino.h"
 #include "config.h"
+#include "kernel.h"
+#include "core.h"
 
 #include <EnableInterrupt.h>
 
@@ -22,14 +24,20 @@ void buttonHandler1(){ buttonHandler(1); }
 void (*buttonHandlers[NUM_BUTTONS])() = { buttonHandler0, buttonHandler1 };
 
 void buttonHandler(int i){
-  long ts = millis();
-  if (ts - lastButtonPressedTimestamps[i] > BOUNCING_TIME){
-    lastButtonPressedTimestamps[i] = ts;
-    int status = digitalRead(inputPins[i]);
-    if (status == HIGH && !buttonPressed[i]) { 
-        buttonPressed[i] = true;
-        buttonTimestamps[i] = ts;
+  if (getCurrentState() == INTRO_STATE) {
+    long ts = millis();
+    if (ts - lastButtonPressedTimestamps[i] > BOUNCING_TIME){
+      lastButtonPressedTimestamps[i] = ts;
+      int status = digitalRead(inputPins[i]);
+      if (status == HIGH && !buttonPressed[i]) { 
+          buttonPressed[i] = true;
+          buttonTimestamps[i] = ts;
+      }
     }
+  } else if (getCurrentState() == SLEEP_STATE) {
+    //si dece mettere che se uno preme un tasto sveglia l'arduino
+  } else if (getCurrentState() == STAGE2_STATE) {
+    //...
   }
 }
 
