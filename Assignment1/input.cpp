@@ -24,7 +24,7 @@ void buttonHandler1(){ buttonHandler(1); }
 void (*buttonHandlers[NUM_BUTTONS])() = { buttonHandler0, buttonHandler1 };
 
 void buttonHandler(int i){
-  if (getCurrentState() == INTRO_STATE) {
+  if (getCurrentState() == INTRO_STATE || getCurrentState() == STAGE1_STATE) {
     long ts = millis();
     if (ts - lastButtonPressedTimestamps[i] > BOUNCING_TIME){
       lastButtonPressedTimestamps[i] = ts;
