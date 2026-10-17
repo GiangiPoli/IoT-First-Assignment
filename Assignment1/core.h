@@ -8,6 +8,9 @@
 #define SLEEP_STATE   5
 #define END_ROUND_STATE 6
 
+#define MAX_TIME_IN_INTRO_STATE 10000
+#define MAX_WAIT_BEFORE_NUMBER 5000
+
 /* core business logic  */
 
 void initCore();
