@@ -54,6 +54,7 @@ void sleep() {
 
 void stage1(){
   if (isJustEnteredInState()){
+    allLedOff();
     resetScreen();
     Serial.println("Stage1...");
   }
@@ -66,6 +67,7 @@ void stage1(){
 
 void stage2(){
   if (isJustEnteredInState()){
+    allLedOff();
     resetInput(0);
     resetInput(1);
     resetScreen();
@@ -122,11 +124,20 @@ void stage2(){
     if (count[1] > 2) decreaseScore(1);
 
     if (valid0 && valid1){
-      incrementScore(reachedAt[0] <= reachedAt[1] ? 0 : 1);
-    } else if (valid0){
+      if (reachedAt[0] <= reachedAt[1]) {
+        incrementScore(0);
+        greenL1();
+      }else {
+        incrementScore(1);
+        greenL4();
+      }
+      } else if (valid0){
       incrementScore(0);
+      greenL1();
+
     } else if (valid1){
       incrementScore(1);
+      greenL4();
     }
 
     T1 -= F;

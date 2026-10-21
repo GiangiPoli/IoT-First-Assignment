@@ -74,7 +74,22 @@ void resetScreen() {
   lcd.clear();
 }
 
-void stage1Output() {
-  analogWrite(L2, 0);
-  analogWrite(L3, 0);
+void greenL1() {
+  analogWrite(L1, HIGH);
 }
+
+void greenL4() {
+  analogWrite(L4, HIGH);
+}
+
+void allLedOff() {
+  analogWrite(L1, LOW);
+  analogWrite(L2, LOW);
+  analogWrite(L3, LOW);
+  analogWrite(L4, LOW);
+}
+
+
+
+
+
