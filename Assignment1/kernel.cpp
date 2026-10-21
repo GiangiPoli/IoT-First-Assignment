@@ -54,3 +54,7 @@ void sleepMode(){
   sleep_enable();
   sleep_mode();
 }
+
+void wakeUP(){
+  
+}

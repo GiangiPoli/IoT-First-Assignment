@@ -16,6 +16,7 @@ long getCurrentTimeInState();
 long getEnteredStateTime();
 bool isJustEnteredInState();
 void sleepMode();
+void wakeUp();
 
 /* for debugging */
 void logMsg(const String& msg);
