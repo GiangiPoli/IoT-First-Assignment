@@ -65,9 +65,9 @@ void scoreboard() {
   lcd.print(getScore1());
 }
 
-void createNumber() {
+void showNumber(int number) {
   lcd.setCursor(9, 2);
-  lcd.print("2");
+  lcd.print(number);
 }
 
 void resetScreen() {

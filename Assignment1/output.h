@@ -5,7 +5,7 @@ void introOutput();
 void initOutput();
 void showGo();
 void scoreboard();
-void createNumber();
+void showNumber(int number);
 void resetScreen();
 void stage1Output();
 void allLedOff();
