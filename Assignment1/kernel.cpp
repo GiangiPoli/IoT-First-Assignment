@@ -50,11 +50,9 @@ void logMsg(const String& msg){
 }
 
 void sleepMode(){
+  Serial.flush();
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);
   sleep_enable();
   sleep_mode();
-}
-
-void wakeUP(){
-  
+  sleep_disable();
 }

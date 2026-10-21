@@ -25,7 +25,7 @@ void (*buttonHandlers[NUM_BUTTONS])() = { buttonHandler0, buttonHandler1 };
 
 void buttonHandler(int i){
   if (getCurrentState() == SLEEP_STATE){
-
+    Serial.println("button handler");
   }else{
     long ts = millis();
     if (ts - lastButtonPressedTimestamps[i] > BOUNCING_TIME){
@@ -55,7 +55,6 @@ void initInput(){
   for (int i = 0; i < NUM_BUTTONS; i++) {
     pinMode(inputPins[i], INPUT);  
     enableInterrupt(inputPins[i], buttonHandlers[i], CHANGE);
-    //attachInterrupt(digitalPinToInterrupt(i), wakeUp, RISING);
   }
 }
 

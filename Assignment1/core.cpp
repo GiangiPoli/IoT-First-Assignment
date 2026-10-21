@@ -38,7 +38,7 @@ void intro(){
   }
   introOutput();
   int dt = getCurrentTimeInState();
-  Serial.println(dt);
+  //Serial.println(dt);
   if (dt > MAX_TIME_IN_INTRO_STATE){
     changeState(SLEEP_STATE);
   }
@@ -186,5 +186,9 @@ void endRound(){
 void finalize(){
   if (isJustEnteredInState()){
     Serial.println("Finalize...");
+      //resetScreen();
+      //scoreboard();
+      //delay(5000);
+      //changeState(INTRO_STATE);
   }
 }
