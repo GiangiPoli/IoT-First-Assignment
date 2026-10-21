@@ -69,7 +69,7 @@ void stage1(){
   }
 }
 
-void stage2(){
+void stage2() {
   if (isJustEnteredInState()){
     allLedOff();
     resetInput(0);
@@ -96,10 +96,9 @@ void stage2(){
         changeState(END_ROUND_STATE);
       }
     }
-  }
+  }else{
 
-  /*Creating a number just one time per round*/
-  if (!isNumberShown){
+   if (!isNumberShown){
     showNumber(numberShown);
     isNumberShown = true;
   }
@@ -131,6 +130,7 @@ void stage2(){
     if ((reachedAt[0] == 0 && reachedAt[1] == 0) || (T1 == 0)){
       Serial.println("Going in final state..");
       changeState(FINAL_STATE);
+      return;
     }
     
     bool valid0 = (count[0] == numberShown);
@@ -164,13 +164,8 @@ void stage2(){
     
 
     T1 -= F;
-    Serial.print("Tempo Rimanente -> ");
-    Serial.println(T1);
-        Serial.print("ReachedAt0 -> ");
-    Serial.println(reachedAt[0]);
-        Serial.print("ReachedAt1 -> ");
-    Serial.println(reachedAt[1]);
     changeState(END_ROUND_STATE);
+  }
   }
 }
 
