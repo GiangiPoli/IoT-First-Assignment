@@ -40,14 +40,15 @@ void buttonHandler(int i){
 }
 
 bool isButtonPressedTogheter() {
-  if (!buttonPressed[0] || !buttonPressed[1]) {return false;}
-  unsigned long t0,t1;
-  noInterrupts();
-  t0 = buttonTimestamps[0];
-  t1 = buttonTimestamps[1];
-  interrupts();
-  unsigned long result = (t0 > t1) ? (t0 - t1) : (t1 - t0);
-  return result <= 200;
+  // if (!buttonPressed[0] || !buttonPressed[1]) {return false;}
+  // unsigned long t0,t1;
+  // noInterrupts();
+  // t0 = buttonTimestamps[0];
+  // t1 = buttonTimestamps[1];
+  // interrupts();
+  // unsigned long result = (t0 > t1) ? (t0 - t1) : (t1 - t0);
+  // return result <= 200;
+  return digitalRead(BUT01_PIN) == HIGH && digitalRead(BUT02_PIN) == HIGH;
 }
 
 void initInput(){
