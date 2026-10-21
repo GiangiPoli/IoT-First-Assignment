@@ -75,11 +75,18 @@ void resetScreen() {
 }
 
 void greenL1() {
-  analogWrite(L1, HIGH);
+  digitalWrite(L1, HIGH);
 }
 
 void greenL4() {
-  analogWrite(L4, HIGH);
+  digitalWrite(L4, HIGH);
+}
+
+void redL2(){
+  digitalWrite(L2, HIGH);
+}
+void redL3(){
+  digitalWrite(L3, HIGH);
 }
 
 void allLedOff() {

@@ -10,6 +10,8 @@ void resetScreen();
 void stage1Output();
 void allLedOff();
 void greenL1();
+void redL2();
+void redL3();
 void greenL4();
 
 #endif
