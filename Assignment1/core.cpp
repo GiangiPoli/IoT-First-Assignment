@@ -86,14 +86,13 @@ void stage2() {
   }
 
   int dt = getCurrentTimeInState();
-
   /*Checking if players press the button too early...in that case they will lose a point*/
   if (dt < randomWaitTime){
     for (int i = 0; i < 2; i++){
       if (isButtonPressed(i)){
         decreaseScore(i);
         resetInput(i);
-        (i == 0) ? redL2 : redL3;
+        (i == 0) ? redL2() : redL3();
         changeState(END_ROUND_STATE);
       }
     }
@@ -126,7 +125,10 @@ void stage2() {
 
   /*When T1 time last, the round is over*/
   if (dt - randomWaitTime >= T1){
-    
+    Serial.print("pulsante 0:  ");
+    Serial.println(count[0]);
+    Serial.print("pulsante 1:  ");
+    Serial.println(count[1]);
     /*Verifing if players did not pressed the button at least the amount of time required or if the time remaining is over: in this case the game is over*/
     if ((reachedAt[0] == 0 && reachedAt[1] == 0) || (T1 == 0)){
       Serial.println("Going in final state..");
@@ -188,7 +190,7 @@ void finalize(){
   if (isJustEnteredInState()){
     Serial.println("Finalize...");
       resetScreen();
-      scoreboard();
+      
       //delay(5000);
       //changeState(INTRO_STATE);
   }
