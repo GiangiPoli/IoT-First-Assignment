@@ -31,6 +31,8 @@ void initCore(){
 }
 
 void intro(){
+    Serial.print("Difficulty chosen -> ");
+  Serial.println(getDifficultyLevel());
   if (isJustEnteredInState()){
     resetScreen();
     Serial.println("Intro...");

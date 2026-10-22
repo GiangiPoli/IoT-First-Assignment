@@ -71,5 +71,5 @@ bool isButtonPressed(int buttonIndex){
 }
 
 int getDifficultyLevel(){
-  return map(analogRead(POT), 0, 1023, 1, 4);
+  return map(analogRead(POT), 0, 1023, 1, 5);
 }
