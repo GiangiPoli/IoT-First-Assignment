@@ -93,6 +93,7 @@ void stage2() {
       if (isButtonPressed(i)){
         decreaseScore(i);
         resetInput(i);
+        
         changeState(END_ROUND_STATE);
       }
     }
@@ -151,6 +152,10 @@ void stage2() {
 
     /**/
     if (over0 || over1){
+      Serial.print("over0 -> ");
+      Serial.println(over0);
+            Serial.print("over1 -> ");
+      Serial.println(over1);
       if (over0 && over1){
         decreaseScore(0);
         decreaseScore(1);
