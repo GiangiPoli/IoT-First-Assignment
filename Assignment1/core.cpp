@@ -15,20 +15,19 @@ int randomWaitTime;
 int numberShown;
 bool isNumberShown;
 
-int T1 = 5000;
-float F = 1000;
+int T1 = GAME_TIME;
+float F;
 
-/*void setupDifficulty(int level){
-  const float factors[4] = {0.95, 0.90, 0.85, 0.80}; 
-  F  = factors[level - 1];
-  T1 = 5000;   
-}*/
+void setupDifficulty(int level){
+  const float factors[4] = {DIFFICULTY_EASY, DIFFICULTY_MEDIUM, DIFFICULTY_HARD, DIFFICULTY_IMPOSSIBLE}; 
+  F  = factors[level - 1];  
+}
 
 
 void initCore(){
   Serial.begin(9600);
   randomSeed(analogRead(0));
-  //setupDifficulty(4);
+  setupDifficulty(getDifficultyLevel());
 }
 
 void intro(){

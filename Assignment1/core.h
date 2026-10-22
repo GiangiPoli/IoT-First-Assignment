@@ -11,6 +11,13 @@
 #define MAX_TIME_IN_INTRO_STATE 10000
 #define MAX_WAIT_BEFORE_NUMBER 5000
 
+#define GAME_TIME 7000
+#define DIFFICULTY_EASY 0.40
+#define DIFFICULTY_MEDIUM 0.60
+#define DIFFICULTY_HARD 0.80
+#define DIFFICULTY_IMPOSSIBLE 1
+
+
 /* core business logic  */
 
 void initCore();
