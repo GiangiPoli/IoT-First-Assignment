@@ -186,8 +186,8 @@ void endRound(){
 void finalize(){
   if (isJustEnteredInState()){
     Serial.println("Finalize...");
-      //resetScreen();
-      //scoreboard();
+      resetScreen();
+      scoreboard();
       //delay(5000);
       //changeState(INTRO_STATE);
   }
