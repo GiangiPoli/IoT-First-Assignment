@@ -11,6 +11,7 @@
 #define L2 10
 #define L3 9
 #define L4 8
+#define POT A0
 
 #define NUM_LED 4
 
