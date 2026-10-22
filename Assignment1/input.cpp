@@ -70,6 +70,6 @@ bool isButtonPressed(int buttonIndex){
   return buttonPressed[buttonIndex];
 }
 
-bool hasBeenPressed(int index){
-  return buttonPressed[index]; 
+int getDifficultyLevel(){
+  return map(analogRead(POT), 0, 1023, 1, 4);
 }

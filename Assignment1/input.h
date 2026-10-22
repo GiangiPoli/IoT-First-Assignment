@@ -5,4 +5,5 @@ void initInput();
 void resetInput(int buttonIndex);
 bool isButtonPressed(int buttonIndex);
 bool isButtonPressedTogheter();
+int getDifficultyLevel();
 #endif
