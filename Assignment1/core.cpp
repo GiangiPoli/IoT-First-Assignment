@@ -103,7 +103,7 @@ void stage2() {
   }
 
 
-  /*Counting buttons pression and memorizing the time needed to press them the required amount of time*/
+  /*Counting buttons pression and memorizing the time needed to press them*/
   for (int i = 0; i < 2; i++){
     if (isButtonPressed(i)){
       count[i]++;
@@ -116,19 +116,19 @@ void stage2() {
 
   /*
    * The reason i do not want to stop the cycle after the first player pressed the button the right amount of time  
-   * is because i want to keep checking if he press the button some more time. Supposing the first player press the 
-   * button the right amount of time, the second one can still press it more time then asked: so first player 
+   * is because i want to keep checking if he presses the button some more time. Supposing the first player press the 
+   * button the right amount of time, the second one can still press it more time than asked: so first player 
    * increase his score by one, while the second player get his score decrease by one point (all in one round)
    */
 
 
-  /*When T1 time last, the round is over*/
+  /*When T1 expires, the round ends*/
   if (dt - randomWaitTime >= T1){
     Serial.print("pulsante 0:  ");
     Serial.println(count[0]);
     Serial.print("pulsante 1:  ");
     Serial.println(count[1]);
-    /*Verifing if players did not pressed the button at least the amount of time required or if the time remaining is over: in this case the game is over*/
+    /*Verifing if the players did not press the button at least the amount of times required or if the time remaining is over: in this case the game is over*/
     if ((reachedAt[0] == 0 && reachedAt[1] == 0) || (T1 == 0)){
       Serial.println("Going in final state..");
       changeState(FINAL_STATE);
@@ -188,9 +188,11 @@ void endRound(){
 void finalize(){
   if (isJustEnteredInState()){
     Serial.println("Finalize...");
-      resetScreen();
-      
-      //delay(5000);
-      //changeState(INTRO_STATE);
+    resetScreen();
+    endGame();
+  }
+  endOutput();
+  if(getCurrentTimeInState() > 10000){
+    changeState(INTRO_STATE);
   }
 }

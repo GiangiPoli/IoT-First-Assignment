@@ -3,6 +3,8 @@
 
 void introOutput();
 void initOutput();
+void endOutput();
+void endGame();
 void showGo();
 void scoreboard();
 void showNumber(int number);
