@@ -51,6 +51,8 @@ void intro(){
 }
 
 void sleep() {
+  allLedOff();
+  sleepScreen();
   sleepMode();
   changeState(INTRO_STATE);
 }

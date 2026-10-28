@@ -112,6 +112,13 @@ void resetScreen() {
   endMessage = "Game Over - The winner is ";
 }
 
+void sleepScreen() {
+  lcd.setCursor(0, 0);
+  lcd.print("Press button to     ");
+  lcd.setCursor(0, 1);
+  lcd.print("continue");
+}
+
 void greenL1() {
   digitalWrite(L1, HIGH);
 }
@@ -132,6 +139,7 @@ void allLedOff() {
   analogWrite(L2, LOW);
   analogWrite(L3, LOW);
   analogWrite(L4, LOW);
+  Serial.println("all Led Off");
 }
 
 
