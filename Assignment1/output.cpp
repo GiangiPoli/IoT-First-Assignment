@@ -14,6 +14,9 @@ int led_value;
 int f;
 int pos;
 unsigned long ultimoAggiornamento = 0;
+String endTie = "Game Over - Tie ";
+String endMessage = "Game Over - The winner is ";
+boolean tie;
 
 void initOutput(){
   pinMode(L1, OUTPUT);
@@ -49,6 +52,38 @@ void introOutput(){
     }
   }
 }
+
+void endOutput(){
+  if(tie == false){
+    if (millis() - aggiornamentoLCD >= intervalloLCD) {
+      aggiornamentoLCD = millis();
+      lcd.setCursor(0, 0);
+      Serial.println(endMessage.substring(pos, pos + 20));
+      Serial.println(pos);
+      lcd.print(endMessage.substring(pos, pos + 20));
+      pos++;
+      if(pos == 10) {
+        pos = 0;
+      }
+    }    
+  }else{
+    lcd.setCursor(0, 0);
+    lcd.print(endTie);
+  }
+}
+
+void endGame(){
+  if (getScore0() == getScore1()){
+    tie = true;
+  }else if (getScore0() > getScore1()){
+    endMessage = endMessage + "P1  ";
+    tie = false;
+  }else if (getScore0() < getScore1()){
+    endMessage = endMessage + "P2  ";
+    tie = false;
+  }
+}
+
 void showGo() {
   lcd.setCursor(10, 2);
   lcd.print("Go!");
@@ -72,6 +107,16 @@ void showNumber(int number) {
 
 void resetScreen() {
   lcd.clear();
+  aggiornamentoLCD = 0;
+  pos=0;
+  endMessage = "Game Over - The winner is ";
+}
+
+void sleepScreen() {
+  lcd.setCursor(0, 0);
+  lcd.print("Press button to     ");
+  lcd.setCursor(0, 1);
+  lcd.print("continue");
 }
 
 void greenL1() {
@@ -94,6 +139,7 @@ void allLedOff() {
   analogWrite(L2, LOW);
   analogWrite(L3, LOW);
   analogWrite(L4, LOW);
+  Serial.println("all Led Off");
 }
 
 

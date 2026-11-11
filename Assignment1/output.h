@@ -3,10 +3,13 @@
 
 void introOutput();
 void initOutput();
+void endOutput();
+void endGame();
 void showGo();
 void scoreboard();
 void showNumber(int number);
 void resetScreen();
+void sleepScreen();
 void stage1Output();
 void allLedOff();
 void greenL1();
