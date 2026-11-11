@@ -58,8 +58,6 @@ void endOutput(){
     if (millis() - aggiornamentoLCD >= intervalloLCD) {
       aggiornamentoLCD = millis();
       lcd.setCursor(0, 0);
-      Serial.println(endMessage.substring(pos, pos + 20));
-      Serial.println(pos);
       lcd.print(endMessage.substring(pos, pos + 20));
       pos++;
       if(pos == 10) {
@@ -116,7 +114,7 @@ void sleepScreen() {
   lcd.setCursor(0, 0);
   lcd.print("Press button to     ");
   lcd.setCursor(0, 1);
-  lcd.print("continue");
+  lcd.print("exit sleep mode");
 }
 
 void greenL1() {
