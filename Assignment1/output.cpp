@@ -86,7 +86,7 @@ void endGame(){
 }
 
 void showGo() {
-  lcd.setCursor(10, 2);
+  lcd.setCursor(9, 2);
   lcd.print("Go!");
 }
 
