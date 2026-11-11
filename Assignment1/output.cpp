@@ -15,6 +15,10 @@ int led_value;
 int f;
 int pos;
 
+String intro = "Welcome to the React! Game. Press Buttons to Start";
+String endTie = "Game Over - Tie ";
+String endMessage = "Game Over - The winner is ";
+
 boolean tie;
 
 void initOutput(){
