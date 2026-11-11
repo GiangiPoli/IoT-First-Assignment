@@ -15,7 +15,7 @@ int randomWaitTime;
 int numberShown;
 bool isNumberShown;
 
-int T1 = GAME_TIME;
+int T1;
 float F;
 
 void setupDifficulty(int level){
@@ -31,6 +31,7 @@ void initCore(){
 }
 
 void intro(){
+  T1 = GAME_TIME;
     Serial.print("Difficulty chosen -> ");
   Serial.println(getDifficultyLevel());
   if (isJustEnteredInState()){
