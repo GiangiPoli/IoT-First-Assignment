@@ -6,7 +6,7 @@
 
 #include <EnableInterrupt.h>
 
-#define BOUNCING_TIME 100
+#define BOUNCING_TIME 50
 
 // #define __DEBUG__
 
