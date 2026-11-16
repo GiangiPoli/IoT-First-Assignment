@@ -141,7 +141,6 @@ void allLedOff() {
   analogWrite(L2, LOW);
   analogWrite(L3, LOW);
   analogWrite(L4, LOW);
-  Serial.println("all Led Off");
 }
 
 

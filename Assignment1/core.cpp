@@ -27,7 +27,6 @@ void setupDifficulty(int level){
 void initCore(){
   Serial.begin(9600);
   randomSeed(analogRead(0));
-  setupDifficulty(getDifficultyLevel());
 }
 
 void intro(){
@@ -40,11 +39,11 @@ void intro(){
   }
   introOutput();
   int dt = getCurrentTimeInState();
-  //Serial.println(dt);
   if (dt > MAX_TIME_IN_INTRO_STATE){
     changeState(SLEEP_STATE);
   }
   if (isButtonPressedTogheter()) {
+    setupDifficulty(getDifficultyLevel());
     changeState(STAGE1_STATE);
     resetInput(0);
     resetInput(1);
@@ -134,7 +133,7 @@ void stage2() {
     Serial.print("pulsante 1:  ");
     Serial.println(count[1]);
     /*Verifing if the players did not press the button at least the amount of times required or if the time remaining is over: in this case the game is over*/
-    if ((reachedAt[0] == 0 && reachedAt[1] == 0) || (T1 == 0)){
+    if ((reachedAt[0] == 0 && reachedAt[1] == 0) || (T1 <= 0)){
       Serial.println("Going in final state..");
       changeState(FINAL_STATE);
       return;
@@ -182,8 +181,8 @@ void endRound(){
     Serial.println("End round stage...");
   }
 
-  /*Showing scoreboard for 3 second, then going back to stage 2*/
-  if(getCurrentTimeInState() < 3000){
+  /*Showing scoreboard for 2 second, then going back to stage 2*/
+  if(getCurrentTimeInState() < 2000){
     scoreboard();
   }else{
     changeState(STAGE2_STATE);
@@ -195,8 +194,13 @@ void finalize(){
     Serial.println("Finalize...");
     resetScreen();
     endGame();
+    redL2();
+    redL3();
   }
   endOutput();
+  if(getCurrentTimeInState() > 2000){
+    allLedOff();
+  }
   if(getCurrentTimeInState() > 10000){
     changeState(INTRO_STATE);
   }
