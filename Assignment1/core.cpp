@@ -31,8 +31,6 @@ void initCore(){
 
 void intro(){
   T1 = GAME_TIME;
-    Serial.print("Difficulty chosen -> ");
-  Serial.println(getDifficultyLevel());
   if (isJustEnteredInState()){
     resetScreen();
     Serial.println("Intro...");
@@ -61,6 +59,8 @@ void sleep() {
 
 void stage1(){
   if (isJustEnteredInState()){
+    Serial.print("Difficulty chosen -> ");
+    Serial.println(getDifficultyLevel());
     allLedOff();
     resetScreen();
     Serial.println("Stage1...");
